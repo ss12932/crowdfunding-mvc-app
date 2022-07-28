@@ -1,5 +1,7 @@
-const connection = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
+const connection = require('../config/connection');
+const {hashPassword} = require('../hooks');
+
 class User extends Model {}
 
 const schema = {
@@ -30,6 +32,10 @@ const schema = {
   },
 };
 const options = {
+  hooks: {
+    // before creation of user, hash password
+    beforeCreate: hashPassword,
+  }
   sequelize: Connection,
   underscored: true,
   timestamps: true,
