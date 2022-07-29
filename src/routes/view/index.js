@@ -5,6 +5,6 @@ const privateRoutes = require('./privateRoutes');
 
 const router = Router();
 
-router.use('/publicRoutes', publicRoutes);
-router.use('/privateRoutes', privateRoutes);
+router.use(publicRoutes);
+router.use(privateRoutes);
 module.exports = router;

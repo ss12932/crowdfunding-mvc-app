@@ -1,14 +1,14 @@
 const renderSignupPage = (req, res) => {
-  res.send('renderCreateProjectPage');
+  return res.render('signup');
 };
 const renderLoginPage = (req, res) => {
-  res.send('renderProfilePage');
+  return res.render('login');
 };
 const renderSingleProjectPage = (req, res) => {
-  res.send('renderProfilePage');
+  return res.render('singleProject');
 };
 const renderHomePage = (req, res) => {
-  res.send('renderProfilePage');
+  return res.render('homepage');
 };
 module.exports = {
   renderSignupPage,

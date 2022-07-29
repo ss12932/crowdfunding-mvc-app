@@ -1,8 +1,8 @@
 const renderCreateProjectPage = (req, res) => {
-  res.send('renderCreateProjectPage');
+  return res.render('createProjectPage');
 };
 const renderProfilePage = (req, res) => {
-  res.send('renderProfilePage');
+  return res.render('profile');
 };
 module.exports = {
   renderCreateProjectPage,
