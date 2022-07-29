@@ -1,8 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const connection = require('../config/connection');
-const {hashPassword} = require('../hooks');
+const { hashPassword } = require('../hooks');
 
-class User extends Model {}
+class User extends Model {
+  checkPassword(password) {
+    return bcrypt.compareSync(password, this.password);
+  }
+}
 
 const schema = {
   id: {
@@ -35,7 +40,7 @@ const options = {
   hooks: {
     // before creation of user, hash password
     beforeCreate: hashPassword,
-  }
+  },
   sequelize: Connection,
   underscored: true,
   timestamps: true,
