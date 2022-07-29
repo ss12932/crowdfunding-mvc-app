@@ -1,3 +1,6 @@
+const { Model, DataTypes } = require('sequelize');
+const connection = require('../config/connection');
+
 class Project extends Model {}
 
 const schema = {
@@ -36,11 +39,11 @@ const schema = {
   },
 };
 const options = {
-  sequelize: Connection,
+  sequelize: connection,
   underscored: true,
   timestamps: true,
   freezeTableName: true,
-  modelName: 'user',
+  modelName: 'project',
 };
 
 Project.init(schema, options);
