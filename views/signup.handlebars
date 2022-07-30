@@ -1,1 +1,24 @@
-<h1>signup</h1>
+<div class='container my-4 border p-4'>
+  <h1>Sign Up</h1>
+  <form>
+    <div class='mb-3'>
+      <label for='fullName' class='form-label'>Full Name</label>
+      <input type='text' class='form-control' id='fullName' />
+    </div>
+    <div class='mb-3'>
+      <label for='exampleInputEmail1' class='form-label'>Email address</label>
+      <input type='email' class='form-control' id='email' />
+    </div>
+    <div class='mb-3'>
+      <label for='password' class='form-label'>Password</label>
+      <input type='password' class='form-control' id='password' />
+    </div>
+    <div class='d-grid gap-2'>
+      <button class='btn btn-primary' type='submit'>Sign Up</button>
+    </div>
+    <div id='emailHelp' class='form-text text-center'>Already registered?
+      <a class='link-primary' href='/login'>
+        Login here
+      </a></div>
+  </form>
+</div>
