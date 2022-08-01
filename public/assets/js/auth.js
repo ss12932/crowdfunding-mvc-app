@@ -1,5 +1,5 @@
 const signupForm = $('#signup-form');
-
+const logoutBtn = $('#logout-btn');
 const handleSignup = async (e) => {
   e.preventDefault();
   const name = $('#name').val();
@@ -43,6 +43,20 @@ const handleLogin = async (e) => {
     alert('Failed to login');
   }
 };
-signupForm.on('submit', handleSignup);
+
+const handleLogout = async () => {
+  //user is logged out
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+  });
+
+  if (response.ok) {
+    window.location.replace('/login');
+  } else {
+    alert('Failed to logout');
+  }
+};
+signupForm.on('submit', handleLogin);
+logoutBtn.on('click', handleLogout);
 
 //TODO: timestamp part 2 20:32, finish the payload for handlesignup.
