@@ -1,17 +1,47 @@
 const signupForm = $('#signup-form');
 
-const handleSignup = (e) => {
+const handleSignup = async (e) => {
   e.preventDefault();
-  const fullName = $('#fullName').val();
+  const name = $('#name').val();
   const email = $('#email').val();
   const password = $('#password').val();
 
   const payload = JSON.stringify({
     email,
     password,
-    fullName,
+    name,
   });
-  console.log(payload);
+  const response = await fetch('/api/users/signup', {
+    method: 'POST',
+    body: payload,
+  });
+
+  if (response.ok) {
+    window.location.replace('/profile');
+  } else {
+    alert('Failed to sign up');
+  }
+};
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+  const email = $('#email').val();
+  const password = $('#password').val();
+
+  const payload = JSON.stringify({
+    email,
+    password,
+  });
+  const response = await fetch('/api/users/login', {
+    method: 'POST',
+    body: payload,
+  });
+
+  if (response.ok) {
+    window.location.replace('/profile');
+  } else {
+    alert('Failed to login');
+  }
 };
 signupForm.on('submit', handleSignup);
 
