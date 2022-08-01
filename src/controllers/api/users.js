@@ -4,11 +4,10 @@ const { User } = require('../../models');
 const signup = async (req, res) => {
   try {
     //  get the payload
-    const payload = getPayloadWithValidFieldsOnly([
-      'name',
-      'email',
-      'password',
-    ]);
+    const payload = getPayloadWithValidFieldsOnly(
+      ['name', 'email', 'password'],
+      req.body
+    );
     //verify payload
 
     if (Object.keys(payload).length !== 3) {
@@ -38,7 +37,10 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     //  get the payload
-    const payload = getPayloadWithValidFieldsOnly(['email', 'password']);
+    const payload = getPayloadWithValidFieldsOnly(
+      ['email', 'password'],
+      req.body
+    );
     //verify payload
 
     if (Object.keys(payload).length !== 2) {

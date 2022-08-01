@@ -1,14 +1,28 @@
 const renderSignupPage = (req, res) => {
-  return res.render('signup');
+  // render page only if user is not logged in
+  if (!req.session.loggedIn) {
+    return res.render('signup');
+  }
+
+  return res.redirect('/');
 };
+
 const renderLoginPage = (req, res) => {
-  return res.render('login');
+  // render page only if user is not logged in
+  if (!req.session.loggedIn) {
+    return res.render('login');
+  }
+
+  return res.redirect('/');
 };
 const renderSingleProjectPage = (req, res) => {
-  return res.render('singleProject');
+  const { loggedIn } = req.session;
+  return res.render('singleProject', { loggedIn });
 };
 const renderHomePage = (req, res) => {
-  return res.render('homepage');
+  // get loggedIn user info from session
+  const { loggedIn } = req.session;
+  return res.render('homepage', { loggedIn });
 };
 module.exports = {
   renderSignupPage,

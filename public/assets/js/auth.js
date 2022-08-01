@@ -1,4 +1,5 @@
 const signupForm = $('#signup-form');
+const loginForm = $('#login-form');
 const logoutBtn = $('#logout-btn');
 const handleSignup = async (e) => {
   e.preventDefault();
@@ -14,6 +15,9 @@ const handleSignup = async (e) => {
   const response = await fetch('/api/users/signup', {
     method: 'POST',
     body: payload,
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   if (response.ok) {
@@ -35,6 +39,9 @@ const handleLogin = async (e) => {
   const response = await fetch('/api/users/login', {
     method: 'POST',
     body: payload,
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   if (response.ok) {
@@ -48,6 +55,9 @@ const handleLogout = async () => {
   //user is logged out
   const response = await fetch('/api/users/logout', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   if (response.ok) {
@@ -56,5 +66,6 @@ const handleLogout = async () => {
     alert('Failed to logout');
   }
 };
-signupForm.on('submit', handleLogin);
+signupForm.on('submit', handleSignup);
+loginForm.on('submit', handleLogin);
 logoutBtn.on('click', handleLogout);
