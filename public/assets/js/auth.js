@@ -58,5 +58,3 @@ const handleLogout = async () => {
 };
 signupForm.on('submit', handleLogin);
 logoutBtn.on('click', handleLogout);
-
-//TODO: timestamp part 2 20:32, finish the payload for handlesignup.
