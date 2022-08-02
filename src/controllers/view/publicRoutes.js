@@ -18,19 +18,21 @@ const renderLoginPage = (req, res) => {
   return res.redirect('/');
 };
 const renderSingleProjectPage = async (req, res) => {
-  const { loggedIn } = req.session;
+  const { loggedIn, user } = req.session;
   const { id } = req.params;
   const projectFromDB = await Project.findByPk(id, {
     include: [
       {
         model: User,
-        attributes: ['name', 'email'],
+        attributes: ['name', 'email', 'id'],
       },
     ],
   });
   const project = projectFromDB.get({ plain: true });
+
+  const isMyProject = loggedIn && user.id === project.user.id;
   console.log(project);
-  return res.render('singleProject', { loggedIn, project });
+  return res.render('singleProject', { loggedIn, project, isMyProject });
 };
 const renderHomePage = async (req, res) => {
   // get loggedIn user info from session

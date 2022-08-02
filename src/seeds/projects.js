@@ -3,7 +3,7 @@ const projects = [
     name: 'Project 1',
     description: 'This is project 1',
     needed_funding: 100.0,
-    user_id: 1,
+    user_id: 2,
   },
   {
     name: 'Project 2',

@@ -14,9 +14,11 @@
   <a class='btn btn-primary p-2' href='/' role='button'>View More Projects</a>
 </div>
 {{#if loggedIn }}
+  {{#if isMyProject}}
 <div class="my-2 text-center">
   <button class="btn btn-danger" id="delete-btn" data-id="{{project.id}}" type="button"><i class="fa-solid fa-trash-can"></i><span class="px-2">Delete Project</span></button>
 </div>
+  {{/if}}
 {{/if}}
 <div class="d-flex flex-row justify-content-around flex-wrap">
 
