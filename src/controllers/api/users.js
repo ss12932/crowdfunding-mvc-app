@@ -85,7 +85,8 @@ const login = async (req, res) => {
   }
 };
 const logout = (req, res) => {
-  res.send('logout');
+  req.session.destroy();
+  return res.redirect('/login');
 };
 
 module.exports = {
