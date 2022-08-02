@@ -17,9 +17,20 @@ const renderLoginPage = (req, res) => {
 
   return res.redirect('/');
 };
-const renderSingleProjectPage = (req, res) => {
+const renderSingleProjectPage = async (req, res) => {
   const { loggedIn } = req.session;
-  return res.render('singleProject', { loggedIn });
+  const { id } = req.params;
+  const projectFromDB = await Project.findByPk(id, {
+    include: [
+      {
+        model: User,
+        attributes: ['name', 'email'],
+      },
+    ],
+  });
+  const project = projectFromDB.get({ plain: true });
+  console.log(project);
+  return res.render('singleProject', { loggedIn, project });
 };
 const renderHomePage = async (req, res) => {
   // get loggedIn user info from session
@@ -39,9 +50,7 @@ const renderHomePage = async (req, res) => {
   );
 
   console.log(projects);
-
-  console.log(projects);
-  return res.render('homepage', { loggedIn });
+  return res.render('homepage', { loggedIn, projects });
 };
 module.exports = {
   renderSignupPage,

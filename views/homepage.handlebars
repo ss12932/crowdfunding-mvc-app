@@ -4,13 +4,10 @@
 {{> publicNavbar}}
 {{/if}}
 <main>
-
-<div class="jumbotron text-center">
-  <h1 class="display-4">Welcome to the Crowdfunding Application</h1>
-  <p class="lead">Your donations and contributions are greatly appreciated! These projects will help transform the livelihoods of millions around the globe!</p>
-  <hr class="my-4">
-  <p>Please visit our list of projects that are currently seeking funding.</p>
-  <a class="btn btn-primary btn-lg" href="/projects" role="button">Learn more</a>
+{{> banner}}
+<div class="d-flex flex-row justify-content-around flex-wrap">
+  {{#each projects as |  project |}}
+  {{>projectCard}}
+  {{/each}}
 </div>
-<div id="globe-anim"></div>
 </main>

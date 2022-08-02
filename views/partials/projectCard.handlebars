@@ -1,12 +1,4 @@
-{{#if loggedIn }}
-{{>privateNavbar}}
-{{else}}
-{{> publicNavbar}}
-{{/if}}
-<main>
-<div class="d-flex flex-row justify-content-around flex-wrap">
-  {{#with project}}
-  <div class='card m-3 text-center' style='width: 100%;'>
+<div class='card m-3 text-center' style='width: 18rem;'>
   <div class='card-body text-center'>
     <h5 class='card-title mb-2'>{{name}}</h5>
     <h6 class='card-subtitle my-2 text-muted fs-6'>{{user.name}}</h6>
@@ -18,6 +10,3 @@
     {{formatFunding needed_funding}}
   </div>
 </div>
-{{/with}}
-</div>
-</main>

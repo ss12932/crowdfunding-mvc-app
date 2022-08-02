@@ -6,10 +6,11 @@ const connectSessionSequelize = require('connect-session-sequelize');
 
 const routes = require('./routes');
 const connection = require('./config/connection');
+const helpers = require('./helpers');
 
 const SequelizeStore = connectSessionSequelize(session.Store);
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 const app = express();
 
