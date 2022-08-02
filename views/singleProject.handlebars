@@ -4,20 +4,32 @@
 {{> publicNavbar}}
 {{/if}}
 <main>
+  <div class='jumbotron text-center'>
+  <h1 class='display-4'>Thank you for your interest!</h1>
+  <p class='lead'>Your donations and contributions are greatly appreciated!
+    These projects will help transform the livelihoods of millions around the
+    globe!</p>
+  <hr class='my-4' />
+  <p>Please visit our list of projects that are currently seeking funding.</p>
+  <a class='btn btn-primary p-2' href='/' role='button'>View More Projects</a>
+</div>
+{{#if loggedIn }}
+<div class="my-2 text-center">
+  <button class="btn btn-danger" id="delete-btn" data-id="{{project.id}}" type="button"><i class="fa-solid fa-trash-can"></i><span class="px-2">Delete Project</span></button>
+</div>
+{{/if}}
 <div class="d-flex flex-row justify-content-around flex-wrap">
-  {{#with project}}
+
   <div class='card m-3 text-center' style='width: 100%;'>
   <div class='card-body text-center'>
-    <h5 class='card-title mb-2'>{{name}}</h5>
-    <h6 class='card-subtitle my-2 text-muted fs-6'>{{user.name}}</h6>
+    <h5 class='card-title mb-2'>{{project.name}}</h5>
+    <h6 class='card-subtitle my-2 text-muted fs-6'>{{project.user.name}}</h6>
     <hr />
-    <p class='card-text'>{{description}}</p>
-    <a href='/projects/{{id}}' class='card-link'>View</a>
+    <p class='card-text'>{{project.description}}</p>
   </div>
   <div class='card-footer'>
-    {{formatFunding needed_funding}}
+    {{formatFunding project.needed_funding}}
   </div>
 </div>
-{{/with}}
 </div>
 </main>
