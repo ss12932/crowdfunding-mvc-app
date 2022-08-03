@@ -1,5 +1,5 @@
 const { Router } = require('express');
-
+const auth = require('../../middlewares/auth');
 const {
   createProject,
   deleteProject,
@@ -7,6 +7,6 @@ const {
 
 const router = Router();
 
-router.post('/', createProject);
-router.delete('/:id', deleteProject);
+router.post('/', auth, createProject);
+router.delete('/:id', auth, deleteProject);
 module.exports = router;

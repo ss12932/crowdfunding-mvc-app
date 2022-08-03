@@ -1,7 +1,7 @@
 const { Project, User } = require('../../models');
 
 const renderCreateProjectPage = (req, res) => {
-  return res.render('createProjectPage');
+  return res.render('createProject');
 };
 const renderProfilePage = async (req, res) => {
   const { loggedIn, user } = req.session;
